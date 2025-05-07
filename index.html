@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis Web App</title>
+    <style>
+        /* General reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+            padding: 50px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            resize: vertical;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .result {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .result h2 {
+            font-size: 2rem;
+            color: #2ecc71;
+        }
+
+        .result p {
+            font-size: 1.2rem;
+            margin: 20px 0;
+        }
+
+        .result a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .result a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Sentiment Analysis Web App</h1>
+        <form action="/predict" method="POST">
+            <label for="review_text">Enter your review:</label>
+            <textarea name="review_text" id="review_text" rows="5" placeholder="Type your review here..." required></textarea><br><br>
+            <button type="submit">Predict Sentiment</button>
+        </form>
+
+        {% if sentiment %}
+        <div class="result">
+            <h2>Prediction Result</h2>
+            <p>The sentiment of the review is: <strong>{{ sentiment }}</strong></p>
+            <a href="/">Go Back</a>
+        </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
